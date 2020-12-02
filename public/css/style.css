@@ -29,7 +29,8 @@ a:hover {
 }
 
 .centered {
-  border: solid 1px black;
+  border-radius: 8%;
+  border: solid 2px black;
   margin: auto;
   height: 500px;
   width: 500px; 
@@ -38,8 +39,8 @@ a:hover {
 
 .centered-child {
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 20%;
+  left: 33%;
   height: 50px; 
   width: 50px; 
   margin: auto;
@@ -48,4 +49,10 @@ a:hover {
 
 body {
   text-align: center;
+  padding: 20px;
+  margin: 10px;
+}
+
+label { 
+  margin: 10px;
 }
