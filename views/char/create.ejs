@@ -12,20 +12,25 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="class" role="tabpanel" aria-labelledby="class-tab">
+    <% for(let i = 0; i < allClasses.length; i++) { %>
+      <% className = allClasses[i] %>
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+  <%=className.name%>
+</button>
 
-    <div class="accordion" id="accordionExample">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <%=allClasses[0].name %>
-            </button>
-          </h5>
-        </div>
-    
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body">
-            <%=allClasses[0].desc %>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><%=className.name%></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%=allClasses[0].desc %>
             <p>Hit Dice:</p><%=allClasses[0].hitDice %>
             <p>First Level HP:</p><%=allClasses[0].firstLevelHp %>
             <p>HP after 1st Level:</p><%=allClasses[0].moreLevelHp %>
@@ -36,62 +41,26 @@
             <p>Skill Proficiency:</p><%=allClasses[0].profSkills %>
             <p>Equipment:</p><%=allClasses[0].equipment %>
            <p>Spellcasting Ability Modifier:</p> <%=allClasses[0].spellcastingAbil %>
-          </div>
-        </div>
       </div>
-            <form action="/char/create" method="POST">
-              <div class="form-group">
-            <select class="form-control" id="class" onchange="this.form.submit()" name="class">
-            <label for="class">Select a class: </label>
-            <% for(let i = 0; i < allClasses.length; i++) { %>
-              <% className = allClasses[i] %>
-              <option value="<%=className.name%>"><%=className.name%></option>
-            <% } %>
-          </select>
-        </div>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="race-tab">
-    <form action="/char/create" method="POST">
-      <div class="form-group">
-        <label for="race">Select a race: </label>
-          <select class="form-control" id="race" name="race">
-           
-          </select>
-        </div>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="abilityScore-tab">
-  
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      <%= allClasses[1].name %>
-                    </button>
-                  </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      <%= allClasses[2].name %>
-                    </button>
-                  </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-              </div>
-            </div> 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
+    <% } %>
+    <form action="/char/create" method="POST">
+      <div class="form-group">
+       <select class="form-control" id="class" onchange="this.form.submit()" name="class">
+       <label for="class">Select a class: </label>
+        <% for(let i = 0; i < allClasses.length; i++) { %>
+          <% className = allClasses[i] %>
+          <option value="<%=className.name%>"><%=className.name%></option>
+        <% } %>
+       </select>
+      </div>
+    </form>
+  </div>
+  <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="race-tab">...</div>
+  <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="abilityScore-tab">...</div>
 </div>

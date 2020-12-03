@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       models.storedChar.belongsTo(models.user)
       models.storedChar.belongsTo(models.classes)
       models.storedChar.belongsTo(models.race)
-      models.storedChar.belongsTo(models.abilityscore)
+      models.storedChar.belongsTo(models.abilityScore)
       models.storedChar.belongsTo(models.background)
     }
   };
