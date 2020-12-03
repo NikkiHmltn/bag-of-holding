@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt'); //making a hashpassword for user
 const {
   Model
 } = require('sequelize');
+const storedchar = require('./storedchar');
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     /**
@@ -11,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.user.hasMany(models.storedChar)
     }
   };
   user.init({

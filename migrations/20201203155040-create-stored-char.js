@@ -8,61 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      class: {
-        type: Sequelize.TEXT
-      },
-      classProfTool: {
-        type: Sequelize.TEXT
-      },
-      classProfArm: {
-        type: Sequelize.TEXT
-      },
-      classProfWeap: {
-        type: Sequelize.TEXT
-      },
-      saveThrow: {
-        type: Sequelize.TEXT
-      },
-      hitDie: {
-        type: Sequelize.TEXT
-      },
-      hp: {
-        type: Sequelize.TEXT
-      },
-      profSkills: {
-        type: Sequelize.TEXT
-      },
-      spellcastAbil: {
-        type: Sequelize.TEXT
-      },
-      equipment: {
-        type: Sequelize.TEXT
-      },
-      race: {
-        type: Sequelize.TEXT
-      },
-      size: {
-        type: Sequelize.TEXT
-      },
-      asi: {
-        type: Sequelize.TEXT
-      },
-      speed: {
+      classId: {
         type: Sequelize.INTEGER
       },
-      lang: {
-        type: Sequelize.TEXT
+      raceId: {
+        type: Sequelize.INTEGER
       },
-      vision: {
-        type: Sequelize.TEXT
-      },
-      trait: {
-        type: Sequelize.TEXT
-      },
-      traitDesc: {
-        type: Sequelize.TEXT
+      abilityScoreId: {
+        type: Sequelize.INTEGER
       },
       backgroundId: {
+        type: Sequelize.INTEGER
+      },
+      userId: {
         type: Sequelize.INTEGER
       },
       name: {
@@ -78,6 +36,9 @@ module.exports = {
         type: Sequelize.TEXT
       },
       hair: {
+        type: Sequelize.TEXT
+      },
+      gender: {
         type: Sequelize.TEXT
       },
       bioDesc: {
