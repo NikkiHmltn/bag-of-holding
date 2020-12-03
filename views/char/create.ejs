@@ -16,8 +16,8 @@
       <div class="form-group">
         <label for="class">Select a class: </label>
           <select class="form-control" id="class" onchange="this.form.submit()" name="class">
-            <% for(let i = 0; i < classInformation.length; i++) { %>
-              <% className = classInformation[i] %>
+            <% for(let i = 0; i < allClasses.length; i++) { %>
+              <% className = allClasses[i] %>
               <option value="<%=className.name%>"><%=className.name%></option>
             <% } %>
           </select>
@@ -29,9 +29,7 @@
       <div class="form-group">
         <label for="race">Select a race: </label>
           <select class="form-control" id="race" name="race">
-            <% raceInfo.forEach(raceName => { %>
-              <option value="<%=raceName.name%>"><%=raceName.name%></option>
-            <% }) %>
+           
           </select>
         </div>
     </form>

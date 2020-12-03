@@ -1,9 +1,15 @@
-const axios = require('axios')
+const db = require('./models');
 
-async function getClassInfo() {
-    let classInfo =  await axios.get('https://api.open5e.com/races/') 
-    let classResults = classInfo.data.results
-    console.log(classResults)
-}
+db.classes.destroy({
+    where: {},
+    truncate: true
+  })
 
-getClassInfo()
+  db.background.destroy({
+    where: {},
+    truncate: true
+  })
+  db.race.destroy({
+    where: {},
+    truncate: true
+  })

@@ -20,6 +20,8 @@ module.exports = {
     speed: 25,
     lang: "Common, Dwarvish" ,
     vision: "Darkvision",
+    createdAt: new Date(),
+    updatedAt: new Date(),
    },
    {
     name: "Elf",
@@ -30,6 +32,8 @@ module.exports = {
     speed: 30,
     lang: "Common, Elvish",
     vision: "Darkvision",
+    createdAt: new Date(),
+    updatedAt: new Date(),
    },
    {
     name: "Halfling",
@@ -40,6 +44,8 @@ module.exports = {
     speed: 25,
     lang: "Common, Halfling",
     vision: null ,
+    createdAt: new Date(),
+    updatedAt: new Date(),
    },
    {
     name: "Human",
@@ -50,6 +56,8 @@ module.exports = {
     speed: 30,
     lang: "Common, one of your choice",
     vision: null,
+    createdAt: new Date(),
+    updatedAt: new Date(),
    },
    {
     name: "Dragonborn",
@@ -60,6 +68,8 @@ module.exports = {
     speed: 30,
     lang: "Common, Draconic",
     vision: null ,
+    createdAt: new Date(),
+    updatedAt: new Date(),
    },
    {
    name: "Gnome" ,
@@ -70,6 +80,8 @@ module.exports = {
     speed: 25,
     lang: "Common, Gnomish",
     vision: "Darkvision",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     name: "Half-Elf" ,
@@ -80,6 +92,8 @@ module.exports = {
     speed: 30,
     lang: "Common, Elvish, Choice",
     vision: "Darkvision",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     name: "Half-Orc",
@@ -90,6 +104,8 @@ module.exports = {
     speed: 30,
     lang: "Common, Orc",
     vision: "Darkvision",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     name: "Tiefling",
@@ -100,6 +116,8 @@ module.exports = {
     speed: 30,
     lang: "Common, Infernal",
     vision: "Darkvision",
+    createdAt: new Date(),
+    updatedAt: new Date(),
   }], {});
   },
 

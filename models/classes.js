@@ -30,5 +30,5 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'classes',
   });
-  return class;
+  return classes;
 };
