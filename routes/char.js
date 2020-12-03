@@ -5,9 +5,26 @@ const axios = require('axios')
 
 
 router.get('/create', (req, res) => {
+
+    let objInfo = {};
     db.classes.findAll().then(classes => {
         let allClasses = classes;
-        res.render('char/create', {allClasses})
+        objInfo.allClasses = classes;
+         db.race.findAll().then(races => {
+        let allRaces = races;
+        objInfo.allRaces = races
+        })
+        axios.get(`http://roll.diceapi.com/json/4d6`)
+        .then(response => {
+            let valueDie = [];
+            let die = response.data.dice
+            for(let i = 0;i <  die.length; i++){
+                let values = die[i].value
+                valueDie.push(values)
+            }
+            console.log(valueDie)
+            res.render('char/create', objInfo)
+        })
     })
 })
 

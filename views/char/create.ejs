@@ -12,35 +12,37 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="class" role="tabpanel" aria-labelledby="class-tab">
+    <h4>Click a class to find out more information about it:</h4>
     <% for(let i = 0; i < allClasses.length; i++) { %>
       <% className = allClasses[i] %>
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%=className.name%>">
   <%=className.name%>
 </button>
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="<%=className.name%>" tabindex="-1" role="dialog" aria-labelledby="<%=className.name%>Title" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"><%=className.name%></h5>
+        <h5 class="modal-title" id="<%=className.name%>Title"><%=className.name%></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      
       <div class="modal-body">
-        <%=allClasses[0].desc %>
-            <p>Hit Dice:</p><%=allClasses[0].hitDice %>
-            <p>First Level HP:</p><%=allClasses[0].firstLevelHp %>
-            <p>HP after 1st Level:</p><%=allClasses[0].moreLevelHp %>
-            <p>Armor Proficiency:</p><%=allClasses[0].profArmor %>
-            <p>Weapon Proficiency:</p><%=allClasses[0].profWeapons %>
-            <p>Tool Proficiency:</p><%=allClasses[0].profTools %>
-            <p>Saving Throws:</p><%=allClasses[0].profSaveThrow %>
-            <p>Skill Proficiency:</p><%=allClasses[0].profSkills %>
-            <p>Equipment:</p><%=allClasses[0].equipment %>
-           <p>Spellcasting Ability Modifier:</p> <%=allClasses[0].spellcastingAbil %>
+        
+        <p><%=className.desc %></p>
+        <p>Hit Dice:</p><%=className.hitDice %>
+        <p>First Level HP:</p><%=className.firstLevelHp %>
+        <p>HP after 1st Level:</p><%=className.moreLevelHp %>
+        <p>Armor Proficiency:</p><%=className.profArmor %>
+        <p>Weapon Proficiency:</p><%=className.profWeapons %>
+        <p>Tool Proficiency:</p><%=className.profTools %>
+        <p>Saving Throws:</p><%=className.profSaveThrow %>
+        <p>Skill Proficiency:</p><%=className.profSkills %>
+        <p>Equipment:</p><%=className.equipment %>
+        <p>Spellcasting Ability Modifier:</p> <%=className.spellcastingAbil %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -51,8 +53,8 @@
     <% } %>
     <form action="/char/create" method="POST">
       <div class="form-group">
+      <label for="class"><h5>Select a race:</h5></label>
        <select class="form-control" id="class" onchange="this.form.submit()" name="class">
-       <label for="class">Select a class: </label>
         <% for(let i = 0; i < allClasses.length; i++) { %>
           <% className = allClasses[i] %>
           <option value="<%=className.name%>"><%=className.name%></option>
@@ -61,6 +63,58 @@
       </div>
     </form>
   </div>
-  <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="race-tab">...</div>
+  <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="race-tab">
+    <h4>Click a race to find out more information about it:</h4>
+    <% for(let i = 0; i < allRaces.length; i++) { %>
+      <% raceName = allRaces[i] %>
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%=raceName.name%>">
+  <%=raceName.name%>
+</button>
+<!-- Modal -->
+<div class="modal fade" id="<%=raceName.name%>" tabindex="-1" role="dialog" aria-labelledby="<%=raceName.name%>Title" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="<%=raceName.name%>Title"><%=raceName.name%></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        
+        <p><%=raceName.desc %></p>
+        <p>Hit Dice:</p><%=raceName.hitDice %>
+        <p>First Level HP:</p><%=raceName.firstLevelHp %>
+        <p>HP after 1st Level:</p><%=raceName.moreLevelHp %>
+        <p>Armor Proficiency:</p><%=raceName.profArmor %>
+        <p>Weapon Proficiency:</p><%=raceName.profWeapons %>
+        <p>Tool Proficiency:</p><%=raceName.profTools %>
+        <p>Saving Throws:</p><%=raceName.profSaveThrow %>
+        <p>Skill Proficiency:</p><%=raceName.profSkills %>
+        <p>Equipment:</p><%=raceName.equipment %>
+        <p>Spellcasting Ability Modifier:</p> <%=raceName.spellcastingAbil %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <% } %>
+    <form action="/char/create" method="POST">
+      <div class="form-group">
+      <label for="class"><h5>Select a class:</h5></label>
+       <select class="form-control" id="class" onchange="this.form.submit()" name="class">
+        <% for(let i = 0; i < allRaces.length; i++) { %>
+          <% raceName = allRaces[i] %>
+          <option value="<%=raceName.name%>"><%=raceName.name%></option>
+        <% } %>
+       </select>
+      </div>
+    </form>
+  </div>
+  </div>
   <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="abilityScore-tab">...</div>
 </div>
