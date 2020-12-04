@@ -1,0 +1,59 @@
+<h4>Ability Scores</h4>
+<h6>Choose a method to determine your status below:</h6>
+<div class="create">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+              Roll for me!</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Standard Scores</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane" id="home" role="tabpanel" aria-labelledby="home-tab"> 
+        <b><%= objectInfo.sumValueOne %>,
+        <%= objectInfo.sumValueTwo %>,
+        <%= objectInfo.sumValueThree %>,
+        <%= objectInfo.sumValueFour %>,
+        <%= objectInfo.sumValueFive %>,
+        <%= objectInfo.sumValueSix %></b></div>
+        <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <b><p>15, 14, 13, 12, 10, 8</p></b>
+        </div>
+      </div>
+
+<p class="important">**Important!**</p>
+<p>When you roll for stats to determine your ability scores, the 'roll for me' option will automatically roll 4d6, drop the lowest, then display all six numbers for you to assign to your stats. Please note this option is only able to be used once, as per the PHB rules. Feel free to pick the standard set of scores if you don't feel comfortable randomizing your ability scores. </p>
+
+
+<form>
+    <div class="form-row">
+      <div class="col col-md-2">
+        <input type="text" class="form-control" placeholder="STR" name="STR">
+        <label for="STR">STR</label>
+      </div>
+    <div class="col col-md-2">
+        <input type="text" class="form-control" placeholder="DEX" name="DEX">
+        <label for="DEX">DEX</label>
+    </div>
+    <div class="col col-md-2">
+        <input type="text" class="form-control" placeholder="CON" name="CON">
+        <label for="CON">CON</label>
+    </div>
+    <div class="col col-md-2">
+        <input type="text" class="form-control" placeholder="INT" name="INT">
+        <label for="INT">INT</label>
+    </div>
+    <div class="col col-md-2">
+        <input type="text" class="form-control" placeholder="WIS" name="WIS">
+        <label for="WIS">WIS</label>
+    </div>
+    <div class="col col-md-2">
+        <input type="text" class="form-control" placeholder="CHA" name="CHA">
+        <label for="CHA">CHA</label>
+    </div>
+  </form>
+
+
+</div>

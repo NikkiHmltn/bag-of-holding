@@ -1,17 +1,4 @@
 <div class="create">
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="class-tab" data-toggle="tab" href="#class" role="tab" aria-controls="class" aria-selected="true">Class</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="race-tab" data-toggle="tab" href="#race" role="tab" aria-controls="race" aria-selected="false">Race</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="abilityScore-tab" data-toggle="tab" href="#abilityScore" role="tab" aria-controls="abilityScore" aria-selected="false">Background</a>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="class" role="tabpanel" aria-labelledby="class-tab">
     <h4>Click a class to find out more information about it:</h4>
     <% for(let i = 0; i < allClasses.length; i++) { %>
       <% className = allClasses[i] %>
@@ -28,10 +15,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      
       <div class="modal-body">
-        
         <p><%=className.desc %></p>
         <p>Hit Dice:</p><%=className.hitDice %>
         <p>First Level HP:</p><%=className.firstLevelHp %>
@@ -50,20 +34,8 @@
     </div>
   </div>
 </div>
-    <% } %>
-    <form action="/char/create" method="POST">
-      <div class="form-group">
-      <label for="class"><h5>Select a class:</h5></label>
-       <select class="form-control" id="class" name="class">
-        <% for(let i = 0; i < allClasses.length; i++) { %>
-          <% className = allClasses[i] %>
-          <option value="<%=className.name%>"><%=className.name%></option>
-        <% } %>
-       </select>
-      </div>
-    </form>
-  </div>
-  <div class="tab-pane fade" id="race" role="tabpanel" aria-labelledby="race-tab">
+</div>
+  <% } %>
     <h4>Click a race to find out more information about it:</h4>
     <% for(let i = 0; i < allRaces.length; i++) { %>
       <% raceName = allRaces[i] %>
@@ -97,22 +69,9 @@
   </div>
 </div>
     <% } %>
-    <form action="/char/create" method="POST">
-      <div class="form-group">
-      <label for="class"><h5>Select a race:</h5></label>
-       <select class="form-control" id="class" name="class">
-        <% for(let i = 0; i < allRaces.length; i++) { %>
-          <% raceName = allRaces[i] %>
-          <option value="<%=raceName.name%>"><%=raceName.name%></option>
-        <% } %>
-       </select>
-      </div>
-    </form>
-  </div>
-  
-  <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="abilityScore-tab">
     <h4>Click a background to find out more information about it:</h4>
     <% for(let i = 0; i < allBackgrounds.length; i++) { %>
+      
       <% background = allBackgrounds[i] %>
       <!-- Button trigger modal -->
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<%=background.name%>">
@@ -146,21 +105,34 @@
   </div>
 </div>
     <% } %>
-    <form action="/char/create" method="POST">
+    <form method="POST"action="/char/ability-score">
       <div class="form-group">
-      <label for="class"><h5>Select a background:</h5></label>
+      <label for="class"><h5>Select a class:</h5></label>
        <select class="form-control" id="class" name="class">
-        <% for(let i = 0; i < allBackgrounds.length; i++) { %>
-          <% background = allBackgrounds[i] %>
-          <option value="<%=background.name%>"><%=background.name%></option>
+        <% for(let i = 0; i < allClasses.length; i++) { %>
+          <% className = allClasses[i] %>
+          <option value="<%=className.id%>"><%=className.name%></option>
         <% } %>
        </select>
       </div>
+      <div class="form-group">
+      <label for="race"><h5>Select a race:</h5></label>
+       <select class="form-control" id="race" name="race">
+        <% for(let i = 0; i < allRaces.length; i++) { %>
+          <% raceName = allRaces[i] %>
+          <option value="<%=raceName.id%>"><%=raceName.name%></option>
+        <% } %>
+       </select>
+      </div>
+      <div class="form-group">
+      <label for="background"><h5>Select a background:</h5></label>
+       <select class="form-control" id="background" name="background">
+        <% for(let i = 0; i < allBackgrounds.length; i++) { %>
+          <% background = allBackgrounds[i] %>
+          <option value="<%=background.id%>"><%=background.name%></option>
+        <% } %>
+       </select>
+      </div>
+      <button type="submit" class="btn btn-danger">Submit</button>
     </form>
-  </div>
-  </div>
-  <form action="/char/create/2" method="POST" onclick="submit()">
-  <button type="button" class="btn btn-danger">Submit</button>
-</form>
-
 </div>
