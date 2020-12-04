@@ -7,7 +7,7 @@
     <a class="nav-link" id="race-tab" data-toggle="tab" href="#race" role="tab" aria-controls="race" aria-selected="false">Race</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="abilityScore-tab" data-toggle="tab" href="#abilityScore" role="tab" aria-controls="abilityScore" aria-selected="false">Ability Score</a>
+    <a class="nav-link" id="abilityScore-tab" data-toggle="tab" href="#abilityScore" role="tab" aria-controls="abilityScore" aria-selected="false">Background</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
@@ -16,7 +16,7 @@
     <% for(let i = 0; i < allClasses.length; i++) { %>
       <% className = allClasses[i] %>
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%=className.name%>">
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<%=className.name%>">
   <%=className.name%>
 </button>
 <!-- Modal -->
@@ -53,8 +53,8 @@
     <% } %>
     <form action="/char/create" method="POST">
       <div class="form-group">
-      <label for="class"><h5>Select a race:</h5></label>
-       <select class="form-control" id="class" onchange="this.form.submit()" name="class">
+      <label for="class"><h5>Select a class:</h5></label>
+       <select class="form-control" id="class" name="class">
         <% for(let i = 0; i < allClasses.length; i++) { %>
           <% className = allClasses[i] %>
           <option value="<%=className.name%>"><%=className.name%></option>
@@ -68,7 +68,7 @@
     <% for(let i = 0; i < allRaces.length; i++) { %>
       <% raceName = allRaces[i] %>
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%=raceName.name%>">
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<%=raceName.name%>">
   <%=raceName.name%>
 </button>
 <!-- Modal -->
@@ -84,17 +84,11 @@
       
       <div class="modal-body">
         
-        <p><%=raceName.desc %></p>
-        <p>Hit Dice:</p><%=raceName.hitDice %>
-        <p>First Level HP:</p><%=raceName.firstLevelHp %>
-        <p>HP after 1st Level:</p><%=raceName.moreLevelHp %>
-        <p>Armor Proficiency:</p><%=raceName.profArmor %>
-        <p>Weapon Proficiency:</p><%=raceName.profWeapons %>
-        <p>Tool Proficiency:</p><%=raceName.profTools %>
-        <p>Saving Throws:</p><%=raceName.profSaveThrow %>
-        <p>Skill Proficiency:</p><%=raceName.profSkills %>
-        <p>Equipment:</p><%=raceName.equipment %>
-        <p>Spellcasting Ability Modifier:</p> <%=raceName.spellcastingAbil %>
+        <p>Size:</p><%=raceName.size %>
+        <p>Ability Score Increase:</p><%=raceName.asiDesc %>
+        <p>Speed:</p><%=raceName.speed %> ft
+        <p>Languages:</p><%=raceName.lang %>
+        <p>Vision:</p><%=raceName.vision %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -105,8 +99,8 @@
     <% } %>
     <form action="/char/create" method="POST">
       <div class="form-group">
-      <label for="class"><h5>Select a class:</h5></label>
-       <select class="form-control" id="class" onchange="this.form.submit()" name="class">
+      <label for="class"><h5>Select a race:</h5></label>
+       <select class="form-control" id="class" name="class">
         <% for(let i = 0; i < allRaces.length; i++) { %>
           <% raceName = allRaces[i] %>
           <option value="<%=raceName.name%>"><%=raceName.name%></option>
@@ -115,6 +109,58 @@
       </div>
     </form>
   </div>
+  
+  <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="abilityScore-tab">
+    <h4>Click a background to find out more information about it:</h4>
+    <% for(let i = 0; i < allBackgrounds.length; i++) { %>
+      <% background = allBackgrounds[i] %>
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<%=background.name%>">
+  <%=background.name%>
+</button>
+<!-- Modal -->
+<div class="modal fade" id="<%=background.name%>" tabindex="-1" role="dialog" aria-labelledby="<%=background.name%>Title" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="<%=background.name%>Title"><%=background.name%></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        
+        <p><%=background.desc %></p>
+        <p>Skill Proficiency:</p><%=background.skillProf %>
+        <p>Tool Proficiency:</p><%=background.profTools %>
+        <p>Languages:</p><%=background.lang %>
+        <p>Equipment:</p><%=background.equipment %>
+        <p>Feat:</p> <%=background.feat %>
+        <p>Feat Description:</p><%=background.featDesc%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
-  <div class="tab-pane fade" id="abilityScore" role="tabpanel" aria-labelledby="abilityScore-tab">...</div>
+</div>
+    <% } %>
+    <form action="/char/create" method="POST">
+      <div class="form-group">
+      <label for="class"><h5>Select a background:</h5></label>
+       <select class="form-control" id="class" name="class">
+        <% for(let i = 0; i < allBackgrounds.length; i++) { %>
+          <% background = allBackgrounds[i] %>
+          <option value="<%=background.name%>"><%=background.name%></option>
+        <% } %>
+       </select>
+      </div>
+    </form>
+  </div>
+  </div>
+  <form action="/char/create/2" method="POST" onclick="submit()">
+  <button type="button" class="btn btn-danger">Submit</button>
+</form>
+
 </div>
