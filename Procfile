@@ -1,1 +1,1 @@
-web: sequelize db:migrate && node server.js
+web: sequelize db:migrate:undo all && sequelize db:migrate && sequelize db:seed:all && node server.js

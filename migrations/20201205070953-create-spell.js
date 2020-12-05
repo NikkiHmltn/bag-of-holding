@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       range: {
-        type: Sequelize.INTEGER
+        type: Sequelize.TEXT
       },
       components: {
         type: Sequelize.TEXT

@@ -14,7 +14,7 @@ module.exports = {
    return queryInterface.bulkInsert('races', [{
     name: "Dwarf",
     size: "Medium",
-    asiDesc:"**_Ability Score Increase._** Your Constitution score increases by 2." ,
+    asiDesc:"Your Constitution score increases by 2." ,
     asiEffect: 2,
     asiTarget: "CON",
     speed: 25,
@@ -26,7 +26,7 @@ module.exports = {
    {
     name: "Elf",
     size: "Medium",
-    asiDesc: "**_Ability Score Increase._** Your Dexterity score increases by 2.",
+    asiDesc: "Your Dexterity score increases by 2.",
     asiEffect: 2,
     asiTarget: "DEX",
     speed: 30,
@@ -38,7 +38,7 @@ module.exports = {
    {
     name: "Halfling",
     size: "Small",
-    asiDesc: "**_Ability Score Increase._** Your Dexterity score increases by 2.",
+    asiDesc: "Your Dexterity score increases by 2.",
     asiEffect: 2,
     asiTarget: "DEX",
     speed: 25,
@@ -50,7 +50,7 @@ module.exports = {
    {
     name: "Human",
     size: "Medium",
-    asiDesc: "**_Ability Score Increase._** Your ability scores each increase by 1.",
+    asiDesc: "Your ability scores each increase by 1.",
     asiEffect: 1,
     asiTarget: "STR, DEX, CON, WIS, INT, CHA",
     speed: 30,
@@ -62,7 +62,7 @@ module.exports = {
    {
     name: "Dragonborn",
     size: "Medium",
-    asiDesc: "**_Ability Score Increase._** Your Strength score increases by 2, and your Charisma score increases by 1.",
+    asiDesc: "Your Strength score increases by 2, and your Charisma score increases by 1.",
     asiEffect: 2,
     asiTarget: "STR, CHA",
     speed: 30,
@@ -74,7 +74,7 @@ module.exports = {
    {
    name: "Gnome" ,
     size: "Small",
-    asiDesc: "**_Ability Score Increase._** Your Intelligence score increases by 2.",
+    asiDesc: "Your Intelligence score increases by 2.",
     asiEffect: 2,
     asiTarget: "INT",
     speed: 25,
@@ -86,9 +86,9 @@ module.exports = {
   {
     name: "Half-Elf" ,
     size: "Medium",
-    asiDesc: "**_Ability Score Increase._** Your Charisma score increases by 2, and two other ability scores of your choice increase by 1.",
+    asiDesc: "Your Charisma score increases by 2, and two other ability scores of your choice increase by 1.",
     asiEffect: 1,
-    asiTarget: "CHA, Choice, Choice",
+    asiTarget: "CHA, Two of your choice",
     speed: 30,
     lang: "Common, Elvish, Choice",
     vision: "Darkvision",
@@ -98,7 +98,7 @@ module.exports = {
   {
     name: "Half-Orc",
     size: "Medium",
-    asiDesc: "**_Ability Score Increase._** Your Strength score increases by 2, and your Constitution score increases by 1.",
+    asiDesc: "Your Strength score increases by 2, and your Constitution score increases by 1.",
     asiEffect: 2,
     asiTarget: "STR, CON",
     speed: 30,
@@ -110,7 +110,7 @@ module.exports = {
   {
     name: "Tiefling",
     size: "Medium",
-    asiDesc: "**_Ability Score Increase._** Your Intelligence score increases by 1, and your Charisma score increases by 2.",
+    asiDesc: "Your Intelligence score increases by 1, and your Charisma score increases by 2.",
     asiEffect: 2,
     asiTarget: "CHA, INT",
     speed: 30,
