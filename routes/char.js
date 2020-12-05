@@ -114,5 +114,9 @@ router.post('/ability-score', async (req, res) => {
         
 })
 
+router.post('/spells', (req, res) => {
+    console.log(req)
+    res.render('char/spells')
+})
 
 module.exports = router;
