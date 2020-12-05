@@ -57,7 +57,7 @@
 
 
 <div class="spellcaster">
-  <% if (objectInfo.userClass === '46') { %>
+  <% if (objectInfo.className === 'Sorcerer') { %>
   <p><b>WHOA</b> there Sorcerer, you need to pick your Origin:</p>
 
   <!-- Button trigger modal -->
@@ -116,7 +116,7 @@ Wild
   <button type="submit" class="btn btn-danger"> Submit</button>
   </form>
   <% } %>
-  <% if (objectInfo.userClass === '47') { %>
+  <% if (objectInfo.className === 'Warlock') { %>
     <p><b>WHOA</b> there Warlock, you need to pick your Patron:</p>
 
   <!-- Button trigger modal -->
@@ -204,8 +204,8 @@ The Fiend
   </form>
 <% } %>
 </div>
-<% console.log(objectInfo.userClass) %>
-<% if (objectInfo.userClass !== '46'|| objectInfo.userClass !== '47') { %>
+<% console.log(objectInfo.className) %>
+<% if (objectInfo.className !== 'Sorcerer'|| objectInfo.className !== 'Warlock') { %>
 <form action="/char/spells" method="POST">
  <button type="submit" class="btn btn-danger"> Submit</button>
 </form>

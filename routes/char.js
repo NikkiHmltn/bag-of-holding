@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const axios = require('axios')
+const axios = require('axios');
+const { response } = require('express');
 
 
 router.get('/create', (req, res) => {
@@ -109,8 +110,15 @@ router.post('/ability-score', async (req, res) => {
         let newValueSix = valueDiceSix.filter(e => e != minSix);
         let sumValueSix = newValueSix.reduce((a, b) => a + b, 0)
         objectInfo.sumValueSix = sumValueSix
-        console.log(objectInfo)
-        res.render('char/ability-score', {objectInfo})
+        db.classes.findOne({
+            where: {
+                id: objectInfo.userClass
+            }
+        }).then((className) => { 
+            objectInfo.className = className.name;
+            res.render('char/ability-score', {objectInfo})
+        })
+       
     }))
         
 })
