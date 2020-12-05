@@ -205,7 +205,7 @@ The Fiend
 <% } %>
 </div>
 <% console.log(objectInfo.className) %>
-<% if (objectInfo.className !== 'Sorcerer'|| objectInfo.className !== 'Warlock') { %>
+<% if (objectInfo.className !== 'Sorcerer' && objectInfo.className !== 'Warlock') { %>
 <form action="/char/spells" method="POST">
  <button type="submit" class="btn btn-danger"> Submit</button>
 </form>
