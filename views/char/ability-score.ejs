@@ -56,4 +56,72 @@
   </form>
 
 
+<div class="spellcaster">
+  <% if (objectInfo.userClass === '46') { %>
+  <p><b>WHOA</b> there Sorcerer, you need to pick your Origin:</p>
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#draconic">
+  Draconic
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="draconic" tabindex="-1" aria-labelledby="draconicLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="draconicLabel">Draconic Blood</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Your innate magic comes from Draconic Magic that was mingled with your blood or that of your ancestors. Most often, sorcerers with this Origin trace their descent back to a mighty Sorcerer of ancient times who made a bargain with a Dragon or who might even have claimed a Dragon parent. Some of these bloodlines are well established in the world, but most are obscure. Any given Sorcerer could be the first of a new bloodline, as a result of a pact or some other exceptional circumstance.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
+  
+
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#wild">
+Wild
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="wild" tabindex="-1" aria-labelledby="wildLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="draconic">Wild Magic</h5>
+        <button type="button" class="draconic" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Your innate magic comes from the wild forces of chaos that underlie the order of creation. You might have endured exposure to some form of raw magic, perhaps through a planar portal leading to Limbo, the Elemental Planes, or the mysterious Far Realm. Perhaps you were blessed by a powerful fey creature or marked by a demon. Or your magic could be a fluke of your birth, with no apparent cause or reason. However it came to be, this chaotic magic churns within you, waiting for any outlet.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+</div>
+<form action="/char/spells" method="POST">
+  <select class="form-control" id="sorcerer-origin" name="sorcerer-origin">
+      <option value="1">Draconic origin</option>
+      <option value="2">Wild origin</option>
+    <% } %>
+   </select>
+   <button type="button" class="btn btn-danger">
+    Submit
+    </button>
+  </form>
+</div>
+
