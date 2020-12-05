@@ -109,6 +109,7 @@ router.post('/ability-score', async (req, res) => {
         let newValueSix = valueDiceSix.filter(e => e != minSix);
         let sumValueSix = newValueSix.reduce((a, b) => a + b, 0)
         objectInfo.sumValueSix = sumValueSix
+        console.log(objectInfo)
         res.render('char/ability-score', {objectInfo})
     }))
         
