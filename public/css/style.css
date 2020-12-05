@@ -11,6 +11,13 @@
   display: flex;
   flex-direction: column;
 }
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrap {
+  padding-bottom: 3em;
+}
 
 #logo {
   margin: 500px 0 0 0;
@@ -68,18 +75,60 @@ body {
   padding: 20px;
   margin: 10px;
 }
+.repo-link {
+  width: 50%;
+  margin: auto;
+  padding: 30px;
+}
+.changes {
+  border: solid black 2px;
+  border-radius: 8px;
+  margin: auto;
+  width: 22%;
+  height: 350px;;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.create {
+  margin: auto;
+  height: 500px;
+  width: 500px; 
+  position: relative;
+}
+.select-class {
+  margin: auto;
+  padding: 5px;
+  width: auto;
+  border: dashed black 2px;
+}
+
+.select-race {
+  margin: auto;
+  padding: 5px;
+  width: auto;
+}
+
+.select-background {
+  margin: auto;
+  padding: 5px;
+  width: auto;
+  border: dashed black 2px;
+}
+
+.form-post-container {
+  
+}
 
 label { 
   margin: 10px;
 }
 
-.create {
-  height: 300px;
-  width: 500px;
-  position: absolute;
-  top: 10%;
-  left: 20%;
+.title {
+  margin: 15px;
+  
 }
+
 
 .nav-link {
   color: red;
