@@ -132,16 +132,19 @@ router.post('/ability-score', async (req, res) => {
 
 router.post('/spells', (req, res) => {
     let classNum = parseInt(req.body.classId)
-    db.spell.findAll({
+    db.classes.findOne({
+        where: {id: classNum}
+    }).then(className => {
+        classInfo = className.name
+        db.spell.findAll({
         include: [{
             model: db.classes,
              where: {id: classNum},
         }] 
+        }).then(spells => {
+            res.render('char/spells', {spells, classInfo})
+        })
     })
-    .then(spells => {
-        res.render('char/spells', {spells})
-    })
-    
 })
 
 module.exports = router;
