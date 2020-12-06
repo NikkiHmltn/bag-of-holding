@@ -30,7 +30,7 @@
   <br>
   <div><p class="important">**<%= objectInfo.raceName%>**</p></div>
 </div>
-<form>
+<form action="/char/spells" method="POST">
     <div class="form-row">
       <div class="col col-md-2">
         <input type="text" class="form-control" placeholder="STR" name="STR">
@@ -56,7 +56,7 @@
         <input type="text" class="form-control" placeholder="CHA" name="CHA">
         <label for="CHA">CHA</label>
     </div>
-  </form>
+  
 
 
 <div class="spellcaster">
@@ -116,6 +116,9 @@ Wild
       <option value="1">Draconic origin</option>
       <option value="2">Wild origin</option>
   </select>
+  <input type="hidden" name="classId" id="classId" value="<%=objectInfo.userClass%>">
+<input type="hidden" name="backgroundId" id="backgroundId" value="<%=objectInfo.userBackground%>">
+<input type="hidden" name="raceId" id="raceId" value="<%=objectInfo.userRace%>">
   <button type="submit" class="btn btn-danger"> Submit</button>
   </form>
   <% } %>
@@ -197,19 +200,24 @@ The Fiend
     </div>
   
 
-<form action="/char/spells" method="POST">
+
   <select class="form-control" id="warlock-origin" name="warlock-origin">
       <option value="1">The Archfey</option>
       <option value="2">The Fiend</option>
       <option value="3">The Great Old One</option>
   </select>
+  <input type="hidden" name="classId" id="classId" value="<%=objectInfo.userClass%>">
+<input type="hidden" name="backgroundId" id="backgroundId" value="<%=objectInfo.userBackground%>">
+<input type="hidden" name="raceId" id="raceId" value="<%=objectInfo.userRace%>">
   <button type="submit" class="btn btn-danger"> Submit</button>
   </form>
 <% } %>
 </div>
-<% console.log(objectInfo.className) %>
+<%  %>
 <% if (objectInfo.className !== 'Sorcerer' && objectInfo.className !== 'Warlock') { %>
-<form action="/char/spells" method="POST">
+<input type="hidden" name="classId" id="classId" value="<%=objectInfo.userClass%>">
+<input type="hidden" name="backgroundId" id="backgroundId" value="<%=objectInfo.userBackground%>">
+<input type="hidden" name="raceId" id="raceId" value="<%=objectInfo.userRace%>">
  <button type="submit" class="btn btn-danger"> Submit</button>
 </form>
 <% } %>

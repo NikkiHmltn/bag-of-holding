@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('../models');
 const axios = require('axios');
 const { response } = require('express');
+const classes = require('../models/classes');
 
 
 router.get('/create', (req, res) => {
@@ -130,8 +131,17 @@ router.post('/ability-score', async (req, res) => {
 })
 
 router.post('/spells', (req, res) => {
-    console.log(req)
-    res.render('char/spells')
+    let classNum = parseInt(req.body.classId)
+    db.spell.findAll({
+        include: [{
+            model: db.classes,
+             where: {id: classNum},
+        }] 
+    })
+    .then(spells => {
+        res.render('char/spells', {spells})
+    })
+    
 })
 
 module.exports = router;
