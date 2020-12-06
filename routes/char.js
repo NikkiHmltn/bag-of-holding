@@ -114,13 +114,19 @@ router.post('/ability-score', async (req, res) => {
             where: {
                 id: objectInfo.userClass
             }
-        }).then((className) => { 
+        }).then(className => {
             objectInfo.className = className.name;
-            res.render('char/ability-score', {objectInfo})
+            db.race.findOne({
+                where: {
+                    id: objectInfo.userRace
+                }
+            }).then(raceName => {
+                objectInfo.raceName = raceName.asiDesc
+                console.log(objectInfo)
+                res.render('char/ability-score', {objectInfo})
+            })
         })
-       
     }))
-        
 })
 
 router.post('/spells', (req, res) => {

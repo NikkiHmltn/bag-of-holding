@@ -80,6 +80,10 @@ body {
   margin: auto;
   padding: 30px;
 }
+.separate {
+  border: dotted black 2px;
+  margin: 10px;
+}
 .changes {
   border: solid black 2px;
   border-radius: 8px;

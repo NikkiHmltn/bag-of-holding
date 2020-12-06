@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  featJoin.init({
+  featJoins.init({
     storedCharId: DataTypes.INTEGER,
     featId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'featJoin',
+    modelName: 'featJoins',
   });
-  return featJoin;
+  return featJoins;
 };
