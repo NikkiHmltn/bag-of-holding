@@ -1,3 +1,17 @@
-<h2>Profile Page</h2>
+<div class="profile">
 
-<h3>Welcome to your PROFILE</h3>
+<form action="/profile"method="GET">
+<h1>Stored Characters</h1>
+   <!-- <div class="card"> -->
+  <% allCharacters.forEach(character => { %>
+    <div class="card"style="width: 28rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%=character.name%></h5>
+        <p class="card-text"><%=character.bioDesc%></p>
+        <a href="#" class="btn btn-danger">View Character</a>
+      </div>
+    </div>
+  <%  }) %>
+  <!-- </div> -->
+</form>
+</div>

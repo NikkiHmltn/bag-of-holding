@@ -13,14 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       models.storedChar.belongsTo(models.user)
       models.storedChar.belongsTo(models.classes)
       models.storedChar.belongsTo(models.race)
-      models.storedChar.belongsTo(models.abilityScore)
       models.storedChar.belongsTo(models.background)
     }
   };
   storedChar.init({
-    classId: DataTypes.INTEGER,
+    classesId: DataTypes.INTEGER,
     raceId: DataTypes.INTEGER,
-    abilityScoreId: DataTypes.INTEGER,
     backgroundId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     name: DataTypes.TEXT,
@@ -29,7 +27,13 @@ module.exports = (sequelize, DataTypes) => {
     eyes: DataTypes.TEXT,
     hair: DataTypes.TEXT,
     gender: DataTypes.TEXT,
-    bioDesc: DataTypes.TEXT
+    bioDesc: DataTypes.TEXT,
+    STR: DataTypes.INTEGER,
+    DEX: DataTypes.INTEGER,
+    CON: DataTypes.INTEGER,
+    INT: DataTypes.INTEGER,
+    WIS: DataTypes.INTEGER,
+    CHA: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'storedChar',

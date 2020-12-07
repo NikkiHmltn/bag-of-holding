@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   featJoins.init({
-    storedCharId: DataTypes.INTEGER,
+    classesId: DataTypes.INTEGER,
     featId: DataTypes.INTEGER
   }, {
     sequelize,

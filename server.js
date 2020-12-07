@@ -6,7 +6,8 @@ const passport = require('./config/ppConfig');
 const flash = require('connect-flash');
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const app = express();
-
+const methodOverride = require('method-override');
+const db = require('./models');
 
 // isLoggedIn middleware
 const isLoggedIn = require('./middleware/isLoggedIn');
@@ -15,6 +16,7 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+app.use(methodOverride('_method'));
 // secret: What we actually will be giving the user on our site as a session cookie
 // resave: Save the session even if it's modified, make this false
 // saveUninitialized: If we have a new session, we save it, therefore making that true
@@ -42,7 +44,12 @@ app.get('/', (req, res) => {
   res.render('index', { alerts: res.locals.alerts });
 });
 app.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile');
+
+  db.storedChar.findAll({
+    where: {userId: req.user.id}
+  }).then((allCharacters)=>{
+    res.render('profile', {allCharacters});
+  })
 });
 app.use('/auth', require('./routes/auth'));
 app.use('/char', isLoggedIn, require('./routes/char'));

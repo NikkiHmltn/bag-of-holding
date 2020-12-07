@@ -110,7 +110,7 @@
   </div>
   <div class="form-post-container">
     <form method="POST"action="/char/ability-score">
-      <div class="form-row align-items-center">
+      <div class="form-row ">
       <div class="form-group mb-2">
       <label for="class"><h5>Select a class:</h5></label>
        <select class="form-control" id="class" name="class">
@@ -138,7 +138,43 @@
         <% } %>
        </select>
       </div>
+      </div>  
+    <div class="select-background">
+      <div class="form-row">
+        <div class="col cold-md-4">
+          <label for="name">Name:</label>
+          <input type="text" name="name" class="form-control" id="name">
+        </div>
+        <div class="col cold-md-2">
+          <label for="age">Age:</label>
+          <input type="text" name="age" class="form-control" id="age">
+        </div>
+        <div class="col cold-md-3">
+          <label for="height">Height:</label>
+          <input type="text" name="height" class="form-control" id="height">
+        </div>
       </div>
+
+      <div class="form-row">
+        <div class="col cold-md-3">
+          <label for="gender">Gender:</label>
+          <input type="text" name="gender" class="form-control" id="gender">
+        </div>
+        <div class="col cold-md-4">
+          <label for="eyes">Eyes:</label>
+          <input type="text" name="eyes" class="form-control" id="eyes">
+        </div>
+        <div class="col cold-md-4">
+          <label for="hair">Hair:</label>
+          <input type="text" name="hair" class="form-control" id="hair">
+        </div>
+      </div>
+    </div>
+      <div class="form-group">
+        <label for="bioDesc">Bio: </label>
+        <textarea class="form-control" name="bioDesc" id="bioDesc" rows="5"></textarea>
+      </div>
+
       <button type="submit" class="btn btn-danger">Submit</button>
     </form>
   </div>

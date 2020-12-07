@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.classes.belongsToMany(models.spell, {through: "spellJoin", foreignKey: "classesId"})
+      models.classes.hasMany(models.storedChar)
     }
   };
   classes.init({

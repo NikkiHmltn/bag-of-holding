@@ -5,7 +5,6 @@ const axios = require('axios');
 const { response } = require('express');
 const classes = require('../models/classes');
 
-
 router.get('/create', (req, res) => {
 
     let objInfo = {};
@@ -26,10 +25,6 @@ router.get('/create', (req, res) => {
 router.post('/ability-score', async (req, res) => {
     
     let objectInfo = {};
-    
-    objectInfo.userClass = req.body.class
-    objectInfo.userBackground = req.body.background
-    objectInfo.userRace = req.body.race
     
     let oneRoll = await axios.get(`http://roll.diceapi.com/json/4d6`);
     let twoRoll = await axios.get(`http://roll.diceapi.com/json/4d6`);
@@ -111,40 +106,76 @@ router.post('/ability-score', async (req, res) => {
         let newValueSix = valueDiceSix.filter(e => e != minSix);
         let sumValueSix = newValueSix.reduce((a, b) => a + b, 0)
         objectInfo.sumValueSix = sumValueSix
-        db.classes.findOne({
+
+        db.storedChar.create({
+            classesId: parseInt(req.body.class),
+            raceId: parseInt(req.body.race),
+            backgroundId: parseInt(req.body.background),
+            userId: req.user.id,
+            name: req.body.name,
+            age: req.body.age,
+            height: req.body.height,
+            eyes: req.body.eyes,
+            hair: req.body.hair,
+            gender: req.body.gender,
+            bioDesc: req.body.bioDesc,
+        }).then((char)=> {
+            objectInfo.charId = char.id
+            console.log('added to storedChar!')
+            db.classes.findOne({
             where: {
-                id: objectInfo.userClass
+                id: parseInt(req.body.class)
             }
         }).then(className => {
             objectInfo.className = className.name;
-            db.race.findOne({
+                db.race.findOne({
                 where: {
-                    id: objectInfo.userRace
+                    id: parseInt(req.body.race)
                 }
-            }).then(raceName => {
-                objectInfo.raceName = raceName.asiDesc
-                console.log(objectInfo)
+                }).then(raceName => {
+                    objectInfo.raceName = raceName.asiDesc
+                    console.log(objectInfo)
                 res.render('char/ability-score', {objectInfo})
+                })
             })
         })
     }))
 })
 
-router.post('/spells', (req, res) => {
-    let classNum = parseInt(req.body.classId)
-    db.classes.findOne({
-        where: {id: classNum}
-    }).then(className => {
-        classInfo = className.name
-        db.spell.findAll({
-        include: [{
-            model: db.classes,
-             where: {id: classNum},
-        }] 
-        }).then(spells => {
-            res.render('char/spells', {spells, classInfo})
-        })
+router.put('/ability-score', (req,res) => {
+
+    let charId = parseInt(req.body.charId)
+    console.log(req.user)
+    db.storedChar.update({
+        STR: parseInt(req.body.STR),
+        DEX: parseInt(req.body.DEX),
+        CON: parseInt(req.body.CON),
+        INT: parseInt(req.body.INT),
+        WIS: parseInt(req.body.WIS),
+        CHA: parseInt(req.body.CHA)
+    }, {
+        where: {id: charId}
+    }).then(() => {
+        res.redirect('profile');
     })
 })
+
+
+// router.post('/spells', (req, res) => {
+//     let classNum = parseInt(req.body.classId)
+//     db.classes.findOne({
+//         where: {id: classNum}
+//     }).then(className => {
+//         classInfo = className.name
+//         db.spell.findAll({
+//         include: [{
+//             model: db.classes,
+//              where: {id: classNum},
+//         }] 
+//         }).then(spells => {
+//             res.render('char/spells', {spells, classInfo})
+//         })
+//     })
+// })
 
 module.exports = router;

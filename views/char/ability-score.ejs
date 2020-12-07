@@ -22,7 +22,7 @@
         <b><p>15, 14, 13, 12, 10, 8</p></b>
         </div>
       </div>
-
+      <% console.log(objectInfo.charId)%>
 <p class="important">**Important!**</p>
 <p>When you roll for stats to determine your ability scores, the 'roll for me' option will automatically roll 4d6, drop the lowest, then display all six numbers for you to assign to your stats. Please note this option is only able to be used once, as per the PHB rules. Feel free to pick the standard set of scores if you don't feel comfortable randomizing your ability scores. </p>
 <div class="separate">
@@ -30,7 +30,7 @@
   <br>
   <div><p class="important">**<%= objectInfo.raceName%>**</p></div>
 </div>
-<form action="/char/spells" method="POST">
+<form action="/char/ability-score/?_method=PUT" method="POST">
     <div class="form-row">
       <div class="col col-md-2">
         <input type="text" class="form-control" placeholder="STR" name="STR">
@@ -111,14 +111,12 @@ Wild
     </div>
   </div>
 </div>
-<form action="/char/spells" method="POST">
+<form action="/char/ability-score" method="POST">
   <select class="form-control" id="sorcerer-origin" name="sorcerer-origin">
       <option value="1">Draconic origin</option>
       <option value="2">Wild origin</option>
   </select>
-  <input type="hidden" name="classId" id="classId" value="<%=objectInfo.userClass%>">
-<input type="hidden" name="backgroundId" id="backgroundId" value="<%=objectInfo.userBackground%>">
-<input type="hidden" name="raceId" id="raceId" value="<%=objectInfo.userRace%>">
+  <input type="hidden" name="charId" id="charId" value="<%=objectInfo.charId%>">
   <button type="submit" class="btn btn-danger"> Submit</button>
   </form>
   <% } %>
@@ -206,18 +204,12 @@ The Fiend
       <option value="2">The Fiend</option>
       <option value="3">The Great Old One</option>
   </select>
-  <input type="hidden" name="classId" id="classId" value="<%=objectInfo.userClass%>">
-<input type="hidden" name="backgroundId" id="backgroundId" value="<%=objectInfo.userBackground%>">
-<input type="hidden" name="raceId" id="raceId" value="<%=objectInfo.userRace%>">
+  <input type="hidden" name="charId" id="charId" value="<%=objectInfo.charId%>">
   <button type="submit" class="btn btn-danger"> Submit</button>
   </form>
 <% } %>
-</div>
-<%  %>
 <% if (objectInfo.className !== 'Sorcerer' && objectInfo.className !== 'Warlock') { %>
-<input type="hidden" name="classId" id="classId" value="<%=objectInfo.userClass%>">
-<input type="hidden" name="backgroundId" id="backgroundId" value="<%=objectInfo.userBackground%>">
-<input type="hidden" name="raceId" id="raceId" value="<%=objectInfo.userRace%>">
+<input type="hidden" name="charId" id="charId" value="<%=objectInfo.charId%>">
  <button type="submit" class="btn btn-danger"> Submit</button>
 </form>
 <% } %>
