@@ -1,1 +1,113 @@
-<% console.log(charInfo)%>
+
+<div class="create">
+
+    <h1><%=charInfo.name%></h1>
+
+    <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Ability Scores
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <b>STR:</b><%=abilityScores.STR%>
+                <b>DEX:</b><%=abilityScores.DEX%>
+                <b>CON:</b><%=abilityScores.CON%>
+                <b>WIS:</b><%=abilityScores.WIS%>
+                <b>INT:</b><%=abilityScores.INT%>
+                <b>CHA:</b><%=abilityScores.CHA%>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Bio
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <li><b>Age:</b><%=charInfo.age%></li>
+                <li><b>Height:</b><%=charInfo.height%></li>
+                <li><b>Eyes:</b><%=charInfo.eyes%></li>
+                <li><b>Hair:</b><%=charInfo.hair%></li>
+                <li><b>Gender:</b><%=charInfo.gender%></li>
+                <%=charInfo.bio%>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Class Information (<%=charInfo.classInformation.name%>)
+                <% console.log(charInfo.backgroundInfo)%>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+             <li><b>HP at first level: </b><%=charInfo.classInformation.firstLevelHp%></li>
+             <li><b>HP with every level after: </b><%=charInfo.classInformation.moreLevelHp%></li>
+             <li><b>Hit Dice: </b><%=charInfo.classInformation.hitDice%></li>
+             <li><b>Armor Proficiency: </b><%=charInfo.classInformation.profArmor%></li>
+             <li><b>Tool Proficiency: </b><%=charInfo.classInformation.profTools%></li>
+             <li><b>Weapon Proficiency: </b><%=charInfo.classInformation.profWeapons%></li>
+             <li><b>Saving Throws: </b><%=charInfo.classInformation.profSaveThrow%></li>
+             <li><b>Skill Proficiency: </b><%=charInfo.classInformation.profSkills%></li>
+             <li><b>Equipment: </b><%=charInfo.classInformation.equipment%></li>
+             <li><b>Spellcasting Modifier: </b><%=charInfo.classInformation.spellcastingAbil%></li>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFour">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Race Information (<%=charInfo.raceInfo.name%>)
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+              <div class="card-body">
+                <li><b>Size: </b><%=charInfo.raceInfo.size%></li>
+                <li><b>Ability Score Increase: </b><%=charInfo.raceInfo.asiDesc%></li>
+                <li><b>Speed: </b><%=charInfo.raceInfo.speed%> ft.</li>
+                <li><b>Languages: </b><%=charInfo.raceInfo.lang%></li>
+                <% if (charInfo.raceInfo.vision !== null) { %>
+                <li><b>Vision: </b><%=charInfo.raceInfo.vision%></li>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  Background Information (<%=charInfo.backgroundInfo.name%>)
+                </button>
+              </h5>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+              <div class="card-body">
+               <li><b>Skill Proficiencies: </b><%=charInfo.backgroundInfo.skillProf%></li>
+               <li><b>Tool Proficiencies: </b><%=charInfo.backgroundInfo.toolProf%></li>
+               <li><b>Languages: </b><%=charInfo.backgroundInfo.lang%></li>
+               <li><b>Equipment: </b><%=charInfo.backgroundInfo.equipment%></li> 
+               <b><%=charInfo.backgroundInfo.feat%>:</b> <%=charInfo.backgroundInfo.featDesc%>
+               <br>
+               <em><%=charInfo.backgroundInfo.desc%></em>
+               
+              </div>
+            </div>
+          </div>  
+        <form action="/char/<%=charInfo.name%>/?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger"> Delete <%=charInfo.name%></button>
+        </form>
+      </div>

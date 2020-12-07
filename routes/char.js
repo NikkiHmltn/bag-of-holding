@@ -204,4 +204,15 @@ router.get('/:name', (req, res) => {
     })
 })
 
+router.delete('/:name', (req, res) => {
+    const name = req.params.name
+    db.storedChar.findOne({
+        where: {name: name}
+    }).then((foundChar)=>{
+        foundChar.destroy().then(()=> {
+            res.redirect('/profile')
+        })
+    })
+})
+
 module.exports = router;
