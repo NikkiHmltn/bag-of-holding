@@ -13,28 +13,29 @@
       <div class="modal fade" id="<%=className.name%>" tabindex="-1" role="dialog" aria-labelledby="<%=className.name%>Title" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
+            
       <div class="modal-header">
         <h5 class="modal-title" id="<%=className.name%>Title"><%=className.name%></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        </div>
       <div class="modal-body">
-        <p><%=className.desc %></p>
-        <b><p>Hit Dice:</p></b><%=className.hitDice %>
-        <b><p>First Level HP:</p></b><%=className.firstLevelHp %>
-        <b><p>HP after 1st Level:</p></b><%=className.moreLevelHp %>
-        <b><p>Armor Proficiency:</p></b><%=className.profArmor %>
-        <b><p>Weapon Proficiency:</p></b> <%=className.profWeapons %>
-        <b><p>Tool Proficiency:</p></b><%=className.profTools %>
-        <b><p>Saving Throws:</p></b><%=className.profSaveThrow %>
-        <b> <p>Skill Proficiency:</p></b><%=className.profSkills %>
-        <b><p>Equipment:</p></b><%=className.equipment %>
-        <b><p>Spellcasting Ability Modifier:</p></b><%=className.spellcastingAbil %>
+        <p><i><%=className.desc %></i></p>
+        <b><li>Hit Dice:</li></b><%=className.hitDice %><br>
+        <b><li>First Level HP:</li></b><%=className.firstLevelHp %><br>
+        <b><li>HP after 1st Level:</li></b><%=className.moreLevelHp %><br>
+        <b><li>Armor Proficiency:</li></b><%=className.profArmor %><br>
+        <b><li>Weapon Proficiency:</li></b> <%=className.profWeapons %><br>
+        <b><li>Tool Proficiency:</li></b><%=className.profTools %><br>
+        <b><li>Saving Throws:</li></b><%=className.profSaveThrow %><br>
+        <b> <li>Skill Proficiency:</li></b><%=className.profSkills %><br>
+        <b><li>Equipment:</li></b><%=className.equipment %><br>
+        <b><li>Spellcasting Ability Modifier:</li></b><%=className.spellcastingAbil %>
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
-      </div>
         </div>
           </div>
         </div>
@@ -53,17 +54,19 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="<%=raceName.name%>Title"><%=raceName.name%></h5>
+        <h5 class="modal-title"  tabindex="-1" role="dialog" id="<%=raceName.name%>Title" aria-hidden="true"><%=raceName.name%></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Size:</p><%=raceName.size %>
-        <p>Ability Score Increase:</p><%=raceName.asiDesc %>
-        <p>Speed:</p><%=raceName.speed %> ft
-        <p>Languages:</p><%=raceName.lang %>
-        <p>Vision:</p><%=raceName.vision %>
+        <li><b>Size:</b></li><%=raceName.size %><br>
+        <li><b>Ability Score Increase:</b></li><%=raceName.asiDesc %><br>
+        <li><b>Speed:</b></li><%=raceName.speed %> ft<br>
+        <li><b>Languages:</b></li><%=raceName.lang %><br>
+        <% if (raceName.vision === 'Darkvision') { %>
+        <li><b>Vision:</b></li><%=raceName.vision %><br>
+        <% } %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -92,13 +95,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <p><%=background.desc %></p>
-        <p>Skill Proficiency:</p><%=background.skillProf %>
-        <p>Tool Proficiency:</p><%=background.profTools %>
-        <p>Languages:</p><%=background.lang %>
-        <p>Equipment:</p><%=background.equipment %>
-        <p>Feat:</p> <%=background.feat %>
-        <p>Feat Description:</p><%=background.featDesc%>
+        <p><i><%=background.desc %></i></p>
+        <li><b>Skill Proficiency:</b></li><%=background.skillProf %> <br>
+        <li><b>Tool Proficiency:</b></li><%=background.toolProf %><br>
+        <li><b>Languages:</b></li><%=background.lang %><br>
+        <li><b>Equipment:</b></li><%=background.equipment %><br>
+        <li><b>Feat:</b></li> <%=background.feat %><br>
+        <li><b>Feat Description:</b></li><%=background.featDesc%>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

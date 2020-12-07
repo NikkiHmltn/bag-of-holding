@@ -88,8 +88,8 @@ body {
   border: solid black 2px;
   border-radius: 8px;
   margin: auto;
-  width: 22%;
-  height: 350px;;
+  width: 40%;
+  height: auto;;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -112,6 +112,9 @@ body {
   border-radius: 10px;
   padding-bottom: 10px;
   margin: 20px;
+}
+.modal-body {
+  text-align: left;
 }
 .select-class {
   margin: auto;
