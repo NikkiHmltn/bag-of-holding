@@ -225,4 +225,21 @@ router.delete('/:name', (req, res) => {
     })
 })
 
+router.get('/spells/:id', (req, res) => {
+    
+    let classInfo = req.params.id
+    let classesId = parseInt(req.query.classesId)
+   
+    db.spell.findAll({
+        include: [{
+            model: db.classes,
+             where: {id: classesId},
+        }] 
+    })
+    .then(spells => {
+        res.render('char/spells', {spells, classInfo})
+    })
+
+})
+
 module.exports = router;

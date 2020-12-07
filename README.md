@@ -8,8 +8,9 @@ This is Project 2 for General Assembly's Software Engineering Immersive course. 
 1. `Fork` and `Clone` this repo
 2. In your CLI, type `git clone` followed by your `clone` link
 3. `npm install` all the dependencies
-3. Be sure to run the `server.js` by either typing `nodemon` or `node server.js`
-4. Visit `localhost:3000` and enjoy!
+4. Seed all the files by running `sequelize db:seed:all`
+5. Be sure to run the `server.js` by either typing `nodemon` or `node server.js`
+6. Visit `localhost:3000` and enjoy!
 
 Alternative you can just visit the site [here](https://my-bag-of-holding.herokuapp.com/)
 
