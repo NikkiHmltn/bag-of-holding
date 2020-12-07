@@ -39,20 +39,29 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
+
 app.get('/', (req, res) => {
   console.log(res.locals.alerts);
   res.render('index', { alerts: res.locals.alerts });
 });
+
 app.get('/profile', isLoggedIn, (req, res) => {
 
   db.storedChar.findAll({
     where: {userId: req.user.id}
   }).then((allCharacters)=>{
     res.render('profile', {allCharacters});
+  }).catch((error) => {
+    res.status(400).render('main/404')
   })
 });
+
 app.use('/auth', require('./routes/auth'));
 app.use('/char', isLoggedIn, require('./routes/char'));
+app.get('*', (req, res) => {
+  res.render('404')
+})
+
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);

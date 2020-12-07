@@ -16,6 +16,8 @@ router.get('/create', (req, res) => {
             db.background.findAll().then(backgrounds => {
                 objInfo.allBackgrounds = backgrounds
                 res.render('char/create', objInfo)
+            }).catch((error) => {
+                res.status(400).render('main/404')
             })
         })
     })
@@ -136,6 +138,8 @@ router.post('/ability-score', async (req, res) => {
                     objectInfo.raceName = raceName.asiDesc
                     console.log(objectInfo)
                 res.render('char/ability-score', {objectInfo})
+                }).catch((error) => {
+                    res.status(400).render('main/404')
                 })
             })
         })
@@ -157,6 +161,8 @@ router.put('/ability-score', (req,res) => {
         where: {id: charId}
     }).then(() => {
         res.redirect('/profile');
+    }).catch((error) => {
+        res.status(400).render('main/404')
     })
 })
 
@@ -198,6 +204,8 @@ router.get('/:name', (req, res) => {
                 }).then((background) => {
                     charInfo.backgroundInfo = background
                     res.render('char/show', {charInfo, abilityScores})
+                }).catch((error) => {
+                    res.status(400).render('main/404')
                 })
             })
         })
@@ -211,6 +219,8 @@ router.delete('/:name', (req, res) => {
     }).then((foundChar)=>{
         foundChar.destroy().then(()=> {
             res.redirect('/profile')
+        }).catch((error) => {
+            res.status(400).render('main/404')
         })
     })
 })
