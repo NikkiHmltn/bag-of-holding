@@ -156,26 +156,52 @@ router.put('/ability-score', (req,res) => {
     }, {
         where: {id: charId}
     }).then(() => {
-        res.redirect('profile');
+        res.redirect('/profile');
     })
 })
 
+router.get('/:name', (req, res) => {
+    console.log(req.params.name)
+    let charInfo = [];
+    let abilityScores = [];
+    
 
-// router.post('/spells', (req, res) => {
-//     let classNum = parseInt(req.body.classId)
-//     db.classes.findOne({
-//         where: {id: classNum}
-//     }).then(className => {
-//         classInfo = className.name
-//         db.spell.findAll({
-//         include: [{
-//             model: db.classes,
-//              where: {id: classNum},
-//         }] 
-//         }).then(spells => {
-//             res.render('char/spells', {spells, classInfo})
-//         })
-//     })
-// })
+    db.storedChar.findOne({
+        where: {name: req.params.name}
+    }).then((response) => {
+        let classesId = response.classesId
+        let raceId = response.raceId
+        let backgroundId = response.backgroundId
+        charInfo.name = response.name
+        charInfo.age = response.age
+        charInfo.height = response.height
+        charInfo.eyes = response.eyes
+        charInfo.hair = response.hair
+        charInfo.gender = response.gender
+        charInfo.bio = response.bioDesc
+        abilityScores.CON = response.CON
+        abilityScores.DEX = response.DEX
+        abilityScores.INT = response.INT
+        abilityScores.WIS = response.WIS
+        abilityScores.CHA = response.CON
+        abilityScores.STR = response.STR
+        db.classes.findOne({
+            where: {id: classesId}
+        }).then((classInfo)=> {
+            charInfo.classInformation = classInfo
+            db.race.findOne({
+                where: {id: raceId}
+            }).then((race) => {
+                charInfo.raceInfo = race
+                db.background.findOne({
+                    where: {id: backgroundId}
+                }).then((background) => {
+                    charInfo.backgroundInfo = background
+                    res.render('char/show', {charInfo, abilityScores})
+                })
+            })
+        })
+    })
+})
 
 module.exports = router;
